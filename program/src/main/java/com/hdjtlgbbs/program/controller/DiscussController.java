@@ -56,7 +56,6 @@ public class DiscussController {
     @PostMapping("/commit")
     @Transactional(rollbackFor = Exception.class)
     public R commit(@RequestBody Map<String, Object> map){
-        System.out.println(map);
         String title = (String) map.get("title");
         String content = discussService.saveDiscuss(map);
         String openId = (String) map.get("openId");
@@ -74,7 +73,6 @@ public class DiscussController {
             discussService.save(discussEntity);
 
             List<String> urls = (List<String>) map.get("fileUrl");
-            System.out.println(urls);
             if(urls.size() != 0) {
                 urls.forEach((item) -> {
                     DiscussImagesRelationEntity entity = new DiscussImagesRelationEntity();
