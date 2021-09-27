@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: minigateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.96.89.40:8847
+      config:
+        server-addr: 47.96.89.40:8847
+    gateway:
+      routes:
+        - id: program_route
+          uri: lb://program
+          predicates:
+            - Path=/api/program/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*),/$\{segment}
+        - id: admin_route
+          uri: lb://renren-fast
+          predicates:
+              - Path=/api/**
+          filters:
+              - RewritePath=/api/(?<segment>/?.*),/renren-fast/$\{segment}
+server:
+  port: 88

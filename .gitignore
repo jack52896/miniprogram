@@ -1,0 +1,4 @@
+# Project exclude paths
+/jingmall-common/target/
+/minigateway/target/
+/program/target/

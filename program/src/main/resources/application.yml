@@ -1,0 +1,70 @@
+spring:
+  application:
+    name: miniprogram
+  main:
+    allow-bean-definition-overriding: true
+  shardingsphere:
+    props:
+      sql:
+        show: true
+    datasource:
+      names: aliyun158,aliyun40,tencentyun
+      #配置replication【121.196.146.158数据库的数据源】
+      aliyun158:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://121.196.146.158:3310/miniprogram?useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&useSSL=false&serverTimezone=UTC
+        username: root
+        password: abc123456
+        maxPoolSize: 100
+        minPoolSize: 5
+      #配置slave【121.4.112.75数据库的数据源】
+      tencentyun:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://121.4.112.75:3310/miniprogram?useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&useSSL=false&serverTimezone=UTC
+        username: root
+        password: abc123456
+        maxPoolSize: 100
+        minPoolSize: 5
+      #配置slave【47.96.89.40数据库的数据源】
+      aliyun40:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://47.96.89.40:3310/miniprogram?useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&useSSL=false&serverTimezone=UTC
+        username: root
+        password: abc123456
+        maxPoolSize: 100
+        minPoolSize: 5
+
+    sharding:
+      # 默认数据源，主要用于写，注意一定要配置读写分离 ,注意：如果不配置，那么就会把三个节点都当做从slave节点，新增，修改和删除会出错。
+      default-data-source-name: aliyun158
+    # 配置数据源的读写分离，但是数据库一定要做主从复制
+    masterslave:
+      # 配置主从名称，可以任意取名字
+      name: HDJTLG-MASTER-SLAVE
+      # 配置主库master，负责数据的写入
+      master-data-source-name: aliyun158
+      # 配置从库slave节点
+      slave-data-source-names: tencentyun,aliyun40
+      # 配置slave节点的负载均衡均衡策略，采用轮询机制
+      load-balance-algorithm-type: round_robin
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.96.89.40:8847
+  redis:
+    port: 6379
+    host: 121.4.112.75
+    database: 0
+    password: zyjdsg12345
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-not-delete-value: 1
+      logic-delete-value: 0
+server:
+  port: 10001

@@ -1,0 +1,37 @@
+package com.hdjtlgbbs.program.entity;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+import java.io.Serializable;
+import java.util.Date;
+import lombok.Data;
+
+/**
+ * 
+ * 
+ * @author zyj
+ * @email =2901570623@qq.com
+ * @date 2021-09-12 15:09:25
+ */
+@Data
+@TableName("plate_discuss_relation")
+public class PlateDiscussRelationEntity implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	@TableId(type = IdType.AUTO)
+	private Integer id;
+	/**
+	 * 发帖id
+	 */
+	private Integer discussId;
+	/**
+	 * 板块id
+	 */
+	private Integer plateId;
+
+}
