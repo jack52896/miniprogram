@@ -32,4 +32,5 @@ public class DiscussImagesRelationEntity implements Serializable {
 
 	private int discussId;
 
+	private Date createTime;
 }

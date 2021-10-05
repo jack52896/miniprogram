@@ -39,4 +39,8 @@ public class WxUserEntity implements Serializable {
 	private Date createTime;
 
 	private int status;
+
+	private String name;
+
+	private String userImageUrl;
 }

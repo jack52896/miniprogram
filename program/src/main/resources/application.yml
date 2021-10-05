@@ -13,7 +13,7 @@ spring:
       aliyun158:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://121.196.146.158:3310/miniprogram?useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&useSSL=false&serverTimezone=UTC
+        url: jdbc:mysql://121.196.146.158:3310/miniprogram?useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&useSSL=false&serverTimezone=Asia/Shanghai
         username: root
         password: abc123456
         maxPoolSize: 100
@@ -22,7 +22,7 @@ spring:
       tencentyun:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://121.4.112.75:3310/miniprogram?useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&useSSL=false&serverTimezone=UTC
+        url: jdbc:mysql://121.4.112.75:3310/miniprogram?useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&useSSL=false&serverTimezone=Asia/Shanghai
         username: root
         password: abc123456
         maxPoolSize: 100
@@ -31,7 +31,7 @@ spring:
       aliyun40:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://47.96.89.40:3310/miniprogram?useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&useSSL=false&serverTimezone=UTC
+        url: jdbc:mysql://47.96.89.40:3310/miniprogram?useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&useSSL=false&serverTimezone=Asia/Shanghai
         username: root
         password: abc123456
         maxPoolSize: 100
@@ -59,6 +59,12 @@ spring:
     host: 121.4.112.75
     database: 0
     password: zyjdsg12345
+  kafka:
+    consumer:
+      group-id: miniprogram-group
+      enable-auto-commit: true
+      auto-commit-interval: 3000
+    bootstrap-servers: 121.4.112.75:9092
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
@@ -68,3 +74,4 @@ mybatis-plus:
       logic-delete-value: 0
 server:
   port: 10001
+

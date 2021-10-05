@@ -8,6 +8,7 @@
         <result property="id" column="id"/>
         <result property="images" column="images"/>
         <result property="discussId" column="discuss_id"/>
+        <result property="createTime" column="create_time"/>
     </resultMap>
 
 

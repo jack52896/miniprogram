@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.common.utils.PageUtils;
 import com.hdjtlgbbs.program.entity.DiscussImagesRelationEntity;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,5 +17,7 @@ import java.util.Map;
 public interface DiscussImagesRelationService extends IService<DiscussImagesRelationEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    List<DiscussImagesRelationEntity> listByAsc(Map map);
 }
 
